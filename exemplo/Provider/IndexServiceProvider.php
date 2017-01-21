@@ -15,6 +15,6 @@ class IndexServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
-        $app['index'] = new IndexController();
+        $app['index'] = new IndexController($app);
     }
 }
