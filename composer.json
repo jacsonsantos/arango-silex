@@ -9,6 +9,12 @@
         "silex/silex": "^2.0",
         "phpunit/phpunit": "^5.7"
     },
+    "autoload":{
+        "psr-4":{
+            "JSantos\\":"src/",
+            "Exemplo\\":"exemplo/"
+        }
+    },
     "license": "MIT",
     "authors": [
         {
