@@ -11,7 +11,8 @@
     },
     "autoload":{
         "psr-4":{
-            "JSantos\\":"src/"
+            "JSantos\\":"src/",
+            "Exemplo\\":"exemplo/"
         }
     },
     "license": "MIT",
