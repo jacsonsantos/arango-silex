@@ -1,0 +1,20 @@
+{
+    "name": "jsantos/arango-silex",
+    "description": "Model para trabalhar facilmente com ArangoDB",
+    "type": "library",
+    "require": {
+        "triagens/arangodb": "^3.1"
+    },
+    "require-dev": {
+        "silex/silex": "^2.0",
+        "phpunit/phpunit": "^5.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jacson Santos",
+            "email": "jacsonk47@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
