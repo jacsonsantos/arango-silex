@@ -32,7 +32,7 @@ class IndexController
     public function getIndex()
     {
         //Usando o Arango Model
-        $arango = new ArangoModel($this->app);
+        $arango = $this->app['arango.model'];
 
         return "Hello, World";
     }
