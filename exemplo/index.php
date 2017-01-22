@@ -22,5 +22,7 @@ use Silex\Application;
     $app->register(new Exemplo\Provider\IndexServiceProvider());
     //Registrando Conexao com ArangoDB
     $app->register(new \Exemplo\Provider\ConnectionArango());
+    //Registrando Service Provider de ArangoModel
+    $app->register(new \JSantos\Provider\ArangoModelServiceProvider());
 
     $app->run();
