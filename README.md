@@ -2,7 +2,7 @@
 Desenvolvi um _Model_ e _ServiceProvider_ que utiliza a Library oficial do ArangoDB para trabalhar com PHP, assim facilitando a manipulação de dados em sua aplicação.
 ## Adicionando Arango-Silex a minha Aplicação
 ```
-composer require jsantos/arango-silex v1.1.0.x-dev
+composer require jsantos/arango-silex dev-master
 
 ```
 ## Estrutura de diretorio
@@ -80,3 +80,47 @@ use Silex\Application;
     $app->run();
 
 ```
+## Como usar o ArangoModel
+Primeiro devemos registrar o Service Provider do ArangoModel(ArangoModelServiceProvider).
+```php
+<?php
+chdir(dirname(__DIR__));
+require "vendor/autoload.php";
+
+use Silex\Application;
+
+    $app = new Application;
+
+    $app['debug'] = true;
+
+    //Registrando Service Controller
+    $app->register(new \Silex\Provider\ServiceControllerServiceProvider());
+    //Registrando Rotas
+    $app->register(new Exemplo\Router\Router());
+    //Registrando Service Provider do Controller Index
+    $app->register(new Exemplo\Provider\IndexServiceProvider());
+    //Registrando Conexao com ArangoDB
+    $app->register(new \Exemplo\Provider\ConnectionArango());
+    //Registrando Service Provider de ArangoModel
+    $app->register(new \JSantos\Provider\ArangoModelServiceProvider());
+
+    $app->run();
+```
+## Metodos ArangoModel
+* createCollection(string $newCollection)
+* hasCollection(string $nameCollection)
+* deleteCollection(string $nameCollection, array $data = [])
+* createDocument(string $nameCollection, array $data)
+* lastInsertId()
+* hasDocument(string $nameCollection,$idDocument)
+* getDocument(string $nameCollection, $idDocument)
+* updateDocument(string $nameCollection, $idDocument, array $data)
+* removeAttributeDocument(Document|array $document, string $attribute)
+* replaceDocument(string $nameCollection, Document $currentDocument, Document $newDocument)
+* removeDocument(Document|array $document)
+* prepare(string $queryAQL)
+* bindCollection(array $bindCollection)
+* bindValue(array $bindValue)
+* execute()
+* query(string $queryAQL)
+* searchInDocument(string $nameCollection, array $document)
