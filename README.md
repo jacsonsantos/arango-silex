@@ -95,10 +95,6 @@ use Silex\Application;
 
     //Registrando Service Controller
     $app->register(new \Silex\Provider\ServiceControllerServiceProvider());
-    //Registrando Rotas
-    $app->register(new Exemplo\Router\Router());
-    //Registrando Service Provider do Controller Index
-    $app->register(new Exemplo\Provider\IndexServiceProvider());
     //Registrando Conexao com ArangoDB
     $app->register(new \Exemplo\Provider\ConnectionArango());
     //Registrando Service Provider de ArangoModel
