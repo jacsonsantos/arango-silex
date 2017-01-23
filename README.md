@@ -124,3 +124,57 @@ use Silex\Application;
 * execute()
 * query(string $queryAQL)
 * searchInDocument(string $nameCollection, array $document)
+
+### Criando Collection
+```php
+<?php
+    $arango = $this->app['arango.model'];
+    
+    $newCollection = "users";
+    
+    if (!$arango->createCollection($newCollection)) {
+        echo "error";
+    }
+    echo "success!";
+```
+### Verifica se já existe Collection
+```php
+<?php
+    $arango = $this->app['arango.model'];
+    
+    $myCollection = "users";
+    
+    if ($arango->hasCollection($myCollection)) {
+        echo "exist";
+    }
+    echo "no exist";
+```
+### Deletando Collection
+```php
+<?php
+    $arango = $this->app['arango.model'];
+    
+    $myCollection = "users";
+    
+    if ($arango->hasCollection($myCollection)) {
+        $arango->deleteCollection($myCollection);
+    }
+```
+### Criando Documentos em Collection
+```php
+<?php
+    $arango = $this->app['arango.model'];
+   
+    $collection = "users";
+    
+    if (!$arango->hasCollection($collection)) {
+        $arango->createCollection($collection);
+    }
+    
+    $data = [
+        "email" => "jacsonk47@gmail.com",
+        "password" => password_hash("jacson", PASSWORD_BCRYPT, ["cost"=>12])
+    ];
+    
+   $idDocument =  $arango->createDocument($collection,$data);
+```
